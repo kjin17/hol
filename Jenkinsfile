@@ -2,6 +2,13 @@
 def app
 
 node {
+    agent {
+        kubernetes {
+            defaultContainer 'jnlp'
+            yamlFile 'agentpod.yaml'
+        }
+    }
+    
     // gitlab으로부터 소스 다운하는 stage
     stage('Checkout') {
             checkout scm   
