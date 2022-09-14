@@ -9,10 +9,6 @@ node {
         }
     }
     
-    tools {
-        docker 'latest'
-    }
-    
     // gitlab으로부터 소스 다운하는 stage
     stage('Checkout') {
             checkout scm   
@@ -36,6 +32,12 @@ node {
     }
     */
     // docker installer
+    stage('Docker install'){
+        tools {
+            docker 'latest'
+        }
+    }
+    
     
     //dockerfile기반 빌드하는 stage ,git소스 root에 dockerfile이 있어야한다
     stage('Build image'){   
