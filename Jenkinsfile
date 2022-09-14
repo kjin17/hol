@@ -9,16 +9,14 @@ node {
         }
     }
     
+    tools {
+        docker 'latest'
+    }
+    
     // gitlab으로부터 소스 다운하는 stage
     stage('Checkout') {
             checkout scm   
     }
-    
-    /* stage('Docker install'){
-        sh "apt-get install curl -y"
-        sh "curl -fsSLO https://get.docker.com/builds/Linux/x86_64/docker-17.03.1-ce.tgz && tar --strip-components=1 -xvzf docker-17.03.1-ce.tgz -C /usr/local/bin"
-    }
-    */
     
     // mvn 툴 선언하는 stage, 필자의 경우 maven 3.6.0을 사용중
     stage('Ready'){  
@@ -37,7 +35,8 @@ node {
         sh "'${mvnHome}/bin/mvn' clean verify sonar:sonar -Dsonar.projectName=pipeline_test -Dsonar.projectKey=pipeline_test -Dsonar.projectVersion=$BUILD_NUMBER"
     }
     */
-
+    // docker installer
+    
     //dockerfile기반 빌드하는 stage ,git소스 root에 dockerfile이 있어야한다
     stage('Build image'){   
         app = docker.build("kjin17/jenkinstest")
