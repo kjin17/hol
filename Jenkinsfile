@@ -14,6 +14,17 @@ node {
             checkout scm   
     }
     
+    // TEST
+    stage('Build image'){   
+        script {
+                    def dockerHome = tool 'docker'
+                    // env.PATH = "${dockerHome}/bin:${env.PATH}"
+                    env.PATH = "/home/jenkins/agent/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin:${env.PATH}"
+                }
+        app = docker.build("kjin17/jenkinstest")
+    }
+    // TEST
+    
     // mvn 툴 선언하는 stage, 필자의 경우 maven 3.6.0을 사용중
     stage('Ready'){  
         sh "echo 'Ready to build'"
