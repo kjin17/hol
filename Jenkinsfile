@@ -18,10 +18,9 @@ node {
     stage('Build image'){   
         script {
                     def dockerHome = tool 'docker'
-                    // env.PATH = "${dockerHome}/bin:${env.PATH}"
-                    env.PATH = "/home/jenkins/agent/tools/org.jenkinsci.plugins.docker.commons.tools.DockerTool/docker/bin:${env.PATH}"
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
                 }
-        app = docker.build("kjin17/jenkinstest")
+        // app = docker.build("kjin17/jenkinstest")
     }
     // TEST
     
