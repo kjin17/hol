@@ -32,10 +32,13 @@ node {
     }
     */
     // docker installer
-    stage('Docker install'){
-        tools {
-            docker 'latest'
-        }
+    stage('Docker Initialize') {
+            steps{
+                script {
+                    def dockerHome = tool 'docker'
+                    env.PATH = "${dockerHome}/bin:${env.PATH}"
+                }
+            }
     }
     
     
