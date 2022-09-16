@@ -4,7 +4,7 @@ def app
 node {
     agent {
         kubernetes {
-            defaultContainer 'jnlp'
+            defaultContainer 'docker'
             yamlFile 'agentpod.yaml'
         }
     }
