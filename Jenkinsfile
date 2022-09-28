@@ -41,7 +41,7 @@ node {
     //docker.withRegistry에 dockerhub는 앞서 설정한 dockerhub credentials의 ID이다.
     stage('Push image') {   
         docker.withRegistry('https://registry.hub.docker.com', 'dockerhub-id') {
-            app.push("${env.BUILD_NUMBER}")
+            // app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
     }
