@@ -45,6 +45,7 @@ node {
             // app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         */
+        sh "docker images"
         sh "docker login -u kjin17 -p dckr_pat_-Ozwf442I8tTkf_a_5U6hCgAk9c https://registry.hub.docker.com"
         sh "docker push kjin17/jenkinstest:latest"
         
